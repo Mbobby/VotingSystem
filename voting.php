@@ -7,7 +7,7 @@ if(!loggedIn())
 }
 ?>
 
-<form role="form" action="checkVote.php">
+<form role="form" action="checkVote.php" method="post">
 <?php  
 	//Database username and password initialization
 	$dbuser = 'test';
@@ -24,12 +24,12 @@ if(!loggedIn())
 	foreach($rows as $row)
 	{
 		echo "<div class=\"form-group\">";
-		echo "<img src=\"images/".$row['picture_url']." \" height=\"50\" width=\"50\"><br>";
+		//echo "<img src=\"images/".$row['picture_url']." \" height=\"50\" width=\"50\"><br>";
 		echo "<label for=\"contestant\">".$row['firstname']." ".$row['lastname']."</label>";
-		echo "<input type=\"radio\" class=\"form-control\" name=\"choice\" value=\"".$row['id']."\">";
+		echo "<input type=\"radio\" class=\"form-control\" name=\"choice\" value=\"".$row['id']."\" required>";
 		echo "</div>";
 	}
 ?>
-  <input type="hidden" value="<?php echo $_SESSION['token']?>"></input>
-  <button type="submit" class="btn btn-default">Submit</button>
+  <input type="hidden" value="<?php echo $_SESSION['token']?>" name="token"></input>
+  <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Vote!">
 </form>

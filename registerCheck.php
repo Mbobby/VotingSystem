@@ -33,13 +33,15 @@
 		die();
 	}
 	
-	if($query->execute(array($firstname, $lastname, $email, $key)))
+	if($query->execute(array($firstname, $lastname, $email, sha1($key))))
 	{
 		$query = $DBH->prepare("SELECT * from Users where email=?");
 		$query->execute(array($email));
 		$row = $query->fetchAll(PDO::FETCH_ASSOC);
 
 		$_SESSION['login'] = "1";
+		$_SESSION['id'] = $row[0]["id"];
+		$_SESSION['voted'] = $row[0]["voted"];
 		$_SESSION['firstname'] = $firstname;
 		$_SESSION['lastname'] = $lastname;
 		$_SESSION['email'] = $email;

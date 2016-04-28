@@ -1,5 +1,10 @@
 <?php 
 	require_once("includes/sessions.php");
+    if(loggedIn())
+    {
+        $_SESSION['alert'] = "Please log out first in order to register a new account";
+        header("Location: index.php");
+    }
 	require_once("includes/header.php");
 ?>
 <section id="login">

@@ -13,9 +13,10 @@
                 	{
                 		include("login.php");
                 	}
-                	else if($_SESSION['voted'] == "1")
+                	else if($_SESSION['voted'] == 1)
                 	{
                 		echo "<h1 style=\"color:#1fa67b\"> Thank you for voting </h1>";
+                        include("result.php");
                 	}
                 	else
                 	{
