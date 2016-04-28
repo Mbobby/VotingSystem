@@ -40,8 +40,14 @@
                             $winner = $row;
                         }
                     }
-                    
+                    if($winner["votes"]== 0)
+                    {
+                        echo "<h1 style=\"color:#1fa67b\">There are no votes yet at this time. Please check again later. </h1>";
+                    }
+                    else
+                    {
                     echo "<h1 style=\"color:#1fa67b\">The Winner of the Election is ".$winner["firstname"]." ".$winner["lastname"]." with ".$winner["votes"]." votes."."</h1>";
+                    }
                 }
                 else
                 {

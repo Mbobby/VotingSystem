@@ -1,5 +1,10 @@
-<?php 
-	require_once("includes/sessions.php");
+<?php
+    require_once("includes/sessions.php");
+    if(loggedIn())
+    {
+        $_SESSION['alert'] = "You are already logged in";
+        header("Location: index.php");
+    }
 	require_once("includes/header.php");
 ?>
 <section id="login">
